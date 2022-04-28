@@ -1,8 +1,8 @@
 //
 //  ViewController.swift
-//  Scene-ManualSegue
+//  Scene-MultiUnwind
 //
-//  Created by 이상준 on 2022/04/25.
+//  Created by 이상준 on 2022/04/28.
 //
 
 import UIKit
@@ -14,9 +14,9 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    @IBAction func wind(_ sender: Any) {
-        self.performSegue(withIdentifier: "ManualWind", sender: self)
+    @IBAction func gotoPage1(_ sender: UIStoryboardSegue) {
+        
     }
-    
+
 }
 

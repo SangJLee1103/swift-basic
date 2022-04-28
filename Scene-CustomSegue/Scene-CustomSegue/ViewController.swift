@@ -1,8 +1,8 @@
 //
 //  ViewController.swift
-//  Scene-ManualSegue
+//  Scene-CustomSegue
 //
-//  Created by 이상준 on 2022/04/25.
+//  Created by 이상준 on 2022/04/28.
 //
 
 import UIKit
@@ -13,10 +13,11 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-    @IBAction func wind(_ sender: Any) {
-        self.performSegue(withIdentifier: "ManualWind", sender: self)
-    }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        NSLog("segueway identifier: \(segue.identifier!)")
+    }
+
+
 }
 
