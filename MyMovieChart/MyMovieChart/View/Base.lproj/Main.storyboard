@@ -3,6 +3,7 @@
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -82,7 +83,7 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="Uqg-kY-xRy" firstAttribute="top" secondItem="jTY-NP-M9e" secondAttribute="bottom" constant="12" id="7UO-6z-Zmc"/>
-                                        <constraint firstItem="v58-wC-q2O" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jTY-NP-M9e" secondAttribute="trailing" symbolic="YES" id="AFx-V1-jDl"/>
+                                        <constraint firstItem="v58-wC-q2O" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="jTY-NP-M9e" secondAttribute="trailing" constant="8" symbolic="YES" id="AFx-V1-jDl"/>
                                         <constraint firstItem="oGy-VW-VsW" firstAttribute="top" secondItem="B9w-AW-hQW" secondAttribute="topMargin" constant="-5" id="FZ9-4s-JG3"/>
                                         <constraint firstItem="v58-wC-q2O" firstAttribute="leading" secondItem="KjT-qH-7Z2" secondAttribute="leading" id="Ikv-qB-pEb"/>
                                         <constraint firstItem="KjT-qH-7Z2" firstAttribute="leading" secondItem="Uqg-kY-xRy" secondAttribute="trailing" constant="8" id="M4d-Ca-eSi"/>
@@ -105,6 +106,7 @@
                                     <outlet property="rating" destination="KjT-qH-7Z2" id="LPf-X5-kAV"/>
                                     <outlet property="thumbnail" destination="oGy-VW-VsW" id="vBq-j1-0Az"/>
                                     <outlet property="title" destination="jTY-NP-M9e" id="lxP-lk-zCA"/>
+                                    <segue destination="pre-36-URN" kind="show" identifier="segue_detail" id="38s-SZ-RmK"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -121,6 +123,42 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rib-hp-HXn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="256.80000000000001" y="47.226386806596707"/>
+        </scene>
+        <!--Title-->
+        <scene sceneID="2te-cw-VCT">
+            <objects>
+                <viewController id="pre-36-URN" customClass="DetailViewController" customModule="MyMovieChart" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="24G-GI-WMn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1dA-c9-pYJ">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="FKp-OV-CeU">
+                                <rect key="frame" x="169" y="315" width="37" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="color" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="E8B-Aa-G6Y"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Title" id="fj3-v9-0ZS"/>
+                    <connections>
+                        <outlet property="spinner" destination="FKp-OV-CeU" id="K72-TX-ovt"/>
+                        <outlet property="wv" destination="1dA-c9-pYJ" id="nvN-sT-33G"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sq8-xY-FzQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1100" y="47.226386806596707"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="zQ4-cf-ief">

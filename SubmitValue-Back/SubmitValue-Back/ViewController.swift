@@ -14,28 +14,22 @@ class ViewController: UIViewController {
     @IBOutlet var resultUpdate: UILabel!
     @IBOutlet var resultInterval: UILabel!
     
-//    var paramEmail: String?
-//    var paramUpdate: Bool?
-//    var paramInterval: Double?
-//
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        
-    }
-    
+    var paramEmail: String?
+    var paramUpdate: Bool?
+    var paramInterval: Double?
+
+
     override func viewWillAppear(_ animated: Bool) {
 //        if let email = paramEmail {
-//            resultEmail.text = email
+//            self.resultEmail.text = email
 //        }
 //
 //        if let update = paramUpdate  {
-//            resultUpdate.text = update==true ? "자동갱신" : "자동갱신안함"
+//            self.resultUpdate.text = update==true ? "자동갱신" : "자동갱신안함"
 //        }
 //
 //        if let interval = paramInterval {
-//            resultInterval.text = "\(Int(interval))분마다"
+//            self.resultInterval.text = "\(Int(interval))분마다"
 //        }
         
         // AppDelegate 객체의 인스턴스를 가져옴

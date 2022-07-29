@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class MovieVO {
     
@@ -16,5 +17,6 @@ class MovieVO {
     var opendate: String? // 개봉일
     var rating: Double? // 평점
     
-    
+    // 메모이제이션 기법(데이터 재사용을 위한 캐싱 처리)
+    var thumbnailImage: UIImage?
 }

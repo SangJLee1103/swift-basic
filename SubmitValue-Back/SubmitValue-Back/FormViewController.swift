@@ -15,21 +15,16 @@ class FormViewController: UIViewController {
     @IBOutlet var interval: UIStepper!
     
     
-    override func viewDidLoad() {
-         super.viewDidLoad()
-    }
-   
-    
-    @IBAction func onSubmit(_ sender: UIButton) {
+    @IBAction func onSubmit(_ sender: AnyObject) {
 //        let preVC = self.presentingViewController
 //        guard let vc = preVC as? ViewController else { return }
-        
-        //값 전달
+//
+//        //값 전달
 //        vc.paramEmail = self.email.text
 //        vc.paramUpdate = self.isUpdate.isOn
 //        vc.paramInterval = self.interval.value
-        
-        //이전 화면으로 복귀
+//
+//        //이전 화면으로 복귀
 //        self.presentingViewController?.dismiss(animated: true)
         
         
@@ -39,13 +34,13 @@ class FormViewController: UIViewController {
 //        ad?.paramEmail = self.email.text
 //        ad?.paramUpdate = self.isUpdate.isOn
 //        ad?.paramInterval = self.interval.value
-    
+
         let ud = UserDefaults.standard
-        
+
         ud.set(self.email.text, forKey: "email")
         ud.set(self.isUpdate.isOn, forKey: "isUpdate")
         ud.set(self.interval.value, forKey: "interval")
-        
+
         self.presentingViewController?.dismiss(animated: true)
     }
     

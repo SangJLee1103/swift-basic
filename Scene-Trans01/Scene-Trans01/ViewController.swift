@@ -17,9 +17,7 @@ class ViewController: UIViewController {
     @IBAction func moveNext(_ sender: UIButton) {
         
         // 이동할 뷰 컨트롤러 객체를 StoryboardID 정보를 이용하여 잠조, instantiateViewController: 인자값으로 입력받은 아이디를 이용하여 뷰컨트롤러를 찾고 그 뷰 컨트롤러에 대한 인스턴스를 생성
-        
-//        let uvc = self.storyboard!.instantiateViewController(withIdentifier: "SecondVC")
-//
+
         //강제 해제했던 것을 ?를 붙여 옵셔널 체인으로 만든 후 guard 구문으로 사용하여 안정성 증가
         guard let uvc = self.storyboard?.instantiateViewController(withIdentifier: "SecondVC") else { return }
         

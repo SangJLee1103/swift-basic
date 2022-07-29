@@ -22,8 +22,6 @@ class ListViewController: UITableViewController {
     
     @IBOutlet var moreBtn: UIButton!
     
-    
-    
     @IBAction func more(_ sender: Any) {
         // 현재 페이지 값에 1을 추가
         self.page += 1
@@ -37,7 +35,7 @@ class ListViewController: UITableViewController {
     
     
     func callMovieApI() {
-        let url = "http://swiftapi.rubypaper.co.kr:2029/hoppin/movies?version=1&page=\(self.page)&count=10&genreId=&order=releasedateasc"
+        let url = "http://swiftapi.rubypaper.co.kr:2029/hoppin/movies?version=1&page=\(self.page)&count=30&genreId=&order=releasedateasc"
         let apiURL: URL! = URL(string: url)
         
         // REST API 호출
@@ -81,11 +79,23 @@ class ListViewController: UITableViewController {
                 if(self.list.count >= totalCount) {
                     self.moreBtn.isHidden = true
                 }
-                
-                
             }
         } catch {
             NSLog("Parse Error!")
+        }
+    }
+    
+    func getThumbnailImage(_ index: Int) -> UIImage {
+        let mvo = self.list[index]
+        
+        if let savedImage = mvo.thumbnailImage {
+            return savedImage
+        } else {
+            let url: URL! = URL(string: mvo.thumbnail!)
+            let imageData = try! Data(contentsOf: url)
+            mvo.thumbnailImage = UIImage(data: imageData)
+            
+            return mvo.thumbnailImage!
         }
     }
     
@@ -109,17 +119,9 @@ class ListViewController: UITableViewController {
         cell.opendate?.text = row.opendate
         cell.rating?.text = "\(row.rating!)"
         
-//        // 썸네일 경로를 인자값으로 하는 URL 객체를 생성
-//        let url: URL! = URL(string: row.thumbnail!)
-//
-//        // 이미지를 읽어와 Data 객체에 저장
-//        let imageData = try! Data(contentsOf: url)
-//
-//        // UIImage 객체를 생성하여 아울렛 변수의 image 속성에 대입
-//        cell.thumbnail.image = UIImage(data: imageData)
-        
-        // 실무에선 가독성 포기하고 이렇게 씀
-        cell.thumbnail.image = UIImage(data: try! Data(contentsOf: URL(string: row.thumbnail!)!))
+        DispatchQueue.main.async {
+            cell.thumbnail.image = self.getThumbnailImage(indexPath.row)
+        }
         
         return cell
     }
@@ -128,7 +130,28 @@ class ListViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         NSLog("선택된 행은 \(indexPath.row) 번째 행입니다.")
     }
-    
+}
+
+// MARK: - 화면 전환시 값을 넘겨주기 위한 세그웨이 관련 처리
+extension ListViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // 실행된 세그웨이 식별자가 "segue_detail"이라면
+        if segue.identifier == "segue_detail" {
+            // sender 인자를 캐스팅하여 테이블 셀 객체로 변환한다.
+            let cell = sender as! MovieCell
+            
+            // 사용자가 클릭한 행을 찾고
+            let path = self.tableView.indexPath(for: cell)
+            
+            // API 영화 데이터 배열 중에 선택된 행에 대한 데이터 추출
+            let movieInfo = self.list[path!.row]
+            
+            // 행 정보를 통해 선택된 영화 데이터를 찾은 후, 목적지 뷰 컨트롤러의 mvo 변수에 대입
+            let detailVC = segue.destination as? DetailViewController
+            detailVC?.mvo = movieInfo
+        }
+    }
 }
 
 

@@ -64,7 +64,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Regist"/>
                                 <connections>
-                                    <segue destination="Nk3-Wj-dFa" kind="presentation" id="2UM-6h-V5V"/>
+                                    <segue destination="Nk3-Wj-dFa" kind="presentation" modalPresentationStyle="fullScreen" id="2UM-6h-V5V"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -86,7 +86,7 @@
             <objects>
                 <viewController id="Nk3-Wj-dFa" customClass="FormViewController" customModule="SubmitValue_Back" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="zsk-JI-rvo">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="이메일" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e54-b2-ya5">

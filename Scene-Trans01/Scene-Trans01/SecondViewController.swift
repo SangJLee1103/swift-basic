@@ -15,6 +15,6 @@ class SecondViewController: UIViewController {
     }
     
     @IBAction func back(_ sender: Any) {
-        self.presentingViewController?.dismiss(animated: true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
 }
